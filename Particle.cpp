@@ -44,11 +44,16 @@ int Particle::resetID(int new_id)
 	this.id = new_id;
 }
 
-void Particle::Update(float p, float v, float a)
+void Particle::Update(float p, float v, float a, float time)
 {
-	this.UpdatePosition(p);
-	this.UpdateVelocity(v);
+	if (trhis.compMas <= 0.0f) { return }	//break early because something went wrong
+
+	this.UpdatePosition(v, a, time);
 	this.UpdateAcceleration(a);
+	this.UpdateVelocity(a, time);
+	//this.velocity *= float_pow(this.drag, time);	//custom power method that works with and returns floats needs to be implemented in math library first
+
+	//set up clearing of forces here later
 }
 
 void Particle::UpdatePosition(float v, float a, float time)
@@ -57,12 +62,20 @@ void Particle::UpdatePosition(float v, float a, float time)
 	//thisposition.addscaledVector(a, time * time * 0.05);
 }
 
-void Particle : UpdateVelocity(float v)
+void Particle : UpdateVelocity(float new_a, float time)
 {
 	this.velocity = v;
+	//this.velocity.addScaledVector(a, time)  //change to this once vect implemented
 }
 
-void Particle::UpdateAcceleration(float a)
+void Particle::UpdateAcceleration_Manual(float a)
 {
 	this.acceleration = a;
+	//gets new a for velocity update, this will get expanded upon later
+}
+
+float Particle::UpdateAccaleration(float a)
+{
+	this.acceleration = a;
+	return a;
 }

@@ -49,11 +49,13 @@ Public:
 
 	void resetId(int new_id);
 
-	void Update(float p, float v, float a);	//update all at once (broken down below for unit testing)
+	void Update(float p, float v, float a, float time);	//update all at once (broken down below for unit testing)
 
 	void UpdatePosition(float v, float a, float time);	//update position in isolation
 
-	void UpdateVelocity(float v);	//update velocity in isolation
+	void UpdateVelocity(float new_a, float time);	//update velocity in isolation
 
-	void UpdateAcceleration(float a);	//update acceleration in isolation
+	void UpdateAcceleration_Manual(float a);	//update acceleration in isolation manually
+
+	float UpdateAcceleration(float) {}; 
 };
