@@ -4,7 +4,7 @@
 
 class Particle
 {
-Private:
+Private: 
 
 	float position;
 
@@ -31,6 +31,8 @@ Public:
 	float getAcceleration();
 
 	float getId();
+
+	void resetId(float new_id);
 
 	void Update(float p, float v, float a);	//update all at once (broken down below for unit testing)
 
