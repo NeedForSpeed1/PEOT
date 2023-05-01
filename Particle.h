@@ -51,7 +51,7 @@ Public:
 
 	void Update(float p, float v, float a);	//update all at once (broken down below for unit testing)
 
-	void UpdatePosition(float p);	//update position in isolation
+	void UpdatePosition(float v, float a, float time);	//update position in isolation
 
 	void UpdateVelocity(float v);	//update velocity in isolation
 

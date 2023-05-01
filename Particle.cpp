@@ -51,9 +51,10 @@ void Particle::Update(float p, float v, float a)
 	this.UpdateAcceleration(a);
 }
 
-void Particle::UpdatePosition(float p)
+void Particle::UpdatePosition(float v, float a, float time)
 {
-	this.position = p;
+	//this.position.addScaledVector(v, t);
+	//thisposition.addscaledVector(a, time * time * 0.05);
 }
 
 void Particle : UpdateVelocity(float v)
