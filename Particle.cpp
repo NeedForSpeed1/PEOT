@@ -1,9 +1,11 @@
 #include "Particle.h"
 
-Paticle::Particle(): this.id(0), this.position(0), this.velocity(0), this.acceleration(0) 
+Paticle::Particle(): this.id(0), this.position(0), this.velocity(0), this.acceleration(0), 
+this.compMass(0)
 {}
 
-Particle::Particle(float p, float v, float a): this.id(0), this.position(p), this.velocity(v), this.acceleration(a)
+Particle::Particle(float p, float v, float a): this.id(0), this.position(p), this.velocity(v), 
+this.acceleration(a), this.compMass(0)
 {}
 
 Particle::~Particle() {//call vector destructors for p, v, and a here}
@@ -28,6 +30,15 @@ int Particle::getId()
 	return this.id;
 }
 
+float Particle::getCompMass()
+{
+	return this.compMass;
+}
+
+void Particle::resetCompMass(float m)
+{
+	this.compMass = m;
+}
 int Particle::resetID(int new_id)
 {
 	this.id = new_id;

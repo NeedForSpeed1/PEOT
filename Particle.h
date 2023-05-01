@@ -41,6 +41,10 @@ Public:
 
 	float getAcceleration();
 
+	float getCompMass() {};
+
+	void resetCompMass(float m) {};
+
 	int getId();
 
 	void resetId(int new_id);
