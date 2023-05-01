@@ -12,6 +12,10 @@ Private:
 
 	int id;	//may be helpful in tracking particles and mem management later...
 
+	const float drag = 0.999;	//prevents precision errors from floats that could lead to a false sense of increased energy over time with no stimulant
+
+	float compMass; //compliment of mass (its inverse)
+	
 	float position;
 
 	float velocity;
