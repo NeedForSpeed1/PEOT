@@ -5,6 +5,12 @@
 class Particle
 {
 Private: 
+	//NOTE: position, velocity, and acceleration are actually vectors
+		//they are written as floats while the vector class is getting made
+		//once vector class isimplemented, these data types will change to vectors
+		//id data member will remain an int
+
+	int id;	//may be helpful in tracking particles and mem management later...
 
 	float position;
 
@@ -12,7 +18,6 @@ Private:
 
 	float acceleration;
 
-	float id;	//may be helpful in tracking particles and mem management later...
 
 Public:
 
@@ -24,15 +29,17 @@ Public:
 
 	//assignment ctr
 
+	~Particle() {};
+
 	float getPosition();
 
 	float getVelocity();
 
 	float getAcceleration();
 
-	float getId();
+	int getId();
 
-	void resetId(float new_id);
+	void resetId(int new_id);
 
 	void Update(float p, float v, float a);	//update all at once (broken down below for unit testing)
 

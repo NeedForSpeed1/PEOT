@@ -1,14 +1,12 @@
 #include "Particle.h"
 
-Paticle::Particle() {}
+Paticle::Particle(): this.id(0), this.position(0), this.velocity(0), this.acceleration(0) 
+{}
 
-Particle::Particle(float p, float v, float a)
-{
-	this.position = p;
-	this.velocity = v;
-	this.acceleration = a;
-	this.id = 1;	//gets reset later, but could also use a rand function for assignment
-}
+Particle::Particle(float p, float v, float a): this.id(0), this.position(p), this.velocity(v), this.acceleration(a)
+{}
+
+Particle::~Particle() {//call vector destructors for p, v, and a here}
 
 float Particle::getPosition()
 {
@@ -25,12 +23,12 @@ float Particle::getAcceleration()
 	return this.acceleration;
 }
 
-float Particle::getId()
+int Particle::getId()
 {
 	return this.id;
 }
 
-float Particle::resetID(float new_id)
+int Particle::resetID(int new_id)
 {
 	this.id = new_id;
 }
