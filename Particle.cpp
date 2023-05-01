@@ -64,12 +64,14 @@ void Particle::UpdatePosition(float v, float a, float time)
 
 void Particle : UpdateVelocity(float new_a, float time)
 {
+	//velocity is just the 1st derivative of the position
 	this.velocity = v;
 	//this.velocity.addScaledVector(a, time)  //change to this once vect implemented
 }
 
 void Particle::UpdateAcceleration_Manual(float a)
 {
+	//acceleration is just the 2nd derivative of the position (1st derivative of velocity)
 	this.acceleration = a;
 	//gets new a for velocity update, this will get expanded upon later
 }
