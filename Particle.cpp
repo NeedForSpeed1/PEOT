@@ -8,6 +8,17 @@ Particle::Particle(float p, float v, float a): this.id(0), this.position(p), thi
 this.acceleration(a), this.compMass(0)
 {}
 
+Particle::Particle(const Particle& p)
+{
+	this* = p; //clean up later to breakdown by vector attributes for a deep copy
+}
+
+Particle& operator=(const Particle& p)
+{
+	this = p;
+	return this*;
+}
+
 Particle::~Particle() {//call vector destructors for p, v, and a here}
 
 float Particle::getPosition()

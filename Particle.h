@@ -29,11 +29,11 @@ Public:
 
 	Particle(float p, float v, float a);	//specialized ctr
 
-	Particle(&Particle p);	//copy ctr
+	Particle(const Particle &p);	//copy ctr
 
-	//assignment ctr
+	Particle& operator=(const Particle& p)	//assignment operator
 
-	~Particle() {};
+	~Particle();	//destructor
 
 	float getPosition();
 
@@ -41,9 +41,9 @@ Public:
 
 	float getAcceleration();
 
-	float getCompMass() {};
+	float getCompMass();
 
-	void resetCompMass(float m) {};
+	void resetCompMass(float m);
 
 	int getId();
 
@@ -57,5 +57,5 @@ Public:
 
 	void UpdateAcceleration_Manual(float a);	//update acceleration in isolation manually
 
-	float UpdateAcceleration(float) {}; 
+	float UpdateAcceleration(float); 
 };
