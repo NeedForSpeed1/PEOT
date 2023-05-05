@@ -19,7 +19,7 @@ Particle& operator=(const Particle& p)
 	return this*;
 }
 
-Particle::~Particle() {//call vector destructors for p, v, and a here}
+Particle::~Particle() {/*call vector destructors for p, v, and a here */ }
 
 float Particle::getPosition()
 {
@@ -50,9 +50,24 @@ void Particle::resetCompMass(float m)
 {
 	this.compMass = m;
 }
-int Particle::resetID(int new_id)
+int Particle::resetId(int new_id)
 {
 	this.id = new_id;
+}
+
+void Particle::setPosition(float p)
+{
+	this.position = p;
+}
+
+void Particle::setAcceleration(float a)
+{
+	this.acceleration = a;
+}
+
+void Particle::setVelocity(float v)
+{
+	this.velocity = v;
 }
 
 void Particle::Update(float p, float v, float a, float time)
@@ -73,7 +88,7 @@ void Particle::UpdatePosition(float v, float a, float time)
 	//thisposition.addscaledVector(a, time * time * 0.05);
 }
 
-void Particle : UpdateVelocity(float new_a, float time)
+void Particle::UpdateVelocity(float new_a, float time)
 {
 	//velocity is just the 1st derivative of the position
 	this.velocity = v;
@@ -87,7 +102,7 @@ void Particle::UpdateAcceleration_Manual(float a)
 	//gets new a for velocity update, this will get expanded upon later
 }
 
-float Particle::UpdateAccaleration(float a)
+float Particle::UpdateAcceleration(float a)
 {
 	this.acceleration = a;
 	return a;

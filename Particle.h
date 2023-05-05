@@ -45,6 +45,12 @@ Public:
 
 	void resetCompMass(float m);
 
+	void setPosition(float p);
+
+	void setAcceleration(float a);
+
+	void setVelocity(float v);
+
 	int getId();
 
 	void resetId(int new_id);
