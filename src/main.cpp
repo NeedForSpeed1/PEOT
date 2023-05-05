@@ -1,12 +1,12 @@
 
-#include "GlutInfo".h"
-#include "application.h"
-#include "Timing.h"
+#include <GlutInfo".h>
+#include <application.h>
+#include <Timing.h>
 
 
 //this is the target "main" that will be in the build file
 
-extern Application* getApplication();
+extern Application* getApplication();   //to be implemented in object type class
 
 Application* app;
 
