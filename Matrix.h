@@ -1,5 +1,6 @@
 #ifndef MATRIX_H
 #define MATRIX_H
+#include "VectorClass.h"
 
 class Matrix{
 	
@@ -7,7 +8,7 @@ class Matrix{
 	Matrix();
 	Matrix add(const Matrix & other) const;
 	Matrix subtract(const Matrix & other) const;
-	//Matrix multVect(const Vector & vect);
+	VectorClass multVect(const VectorClass & vect)const;
 	static Matrix getIdentity();
 	//Matrix crossProduct();
 	Matrix multMatrix(const Matrix & other) const;

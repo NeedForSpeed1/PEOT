@@ -56,6 +56,8 @@ Matrix Matrix::subtract(const Matrix & other) const{
 Matrix Matrix::multMatrix(const Matrix & other) const{
 	
 	Matrix retVal = Matrix();
+
+	//Can be lots of dot products
 	
 	retVal.x0 = this->x0 * other.x0 + this->x1 * other.x4 + this->x2 * other.x8 + this->x3 * other.x12;
 	retVal.x1 = this->x0 * other.x1 + this->x1 * other.x5 + this->x2 * other.x9 + this->x3 * other.x13;
@@ -81,7 +83,7 @@ Matrix Matrix::multMatrix(const Matrix & other) const{
 	return retVal;
 }
 
-static Matrix Matrix::getIdentity(){
+Matrix Matrix::getIdentity(){
 	Matrix identity = Matrix();
 	
 	identity.x0 = 1;
@@ -95,3 +97,13 @@ static Matrix Matrix::getIdentity(){
 Matrix::Matrix()
 :x0(0),x1(0), x2(0), x3(0), x4(0), x5(0), x6(0), x7(0), x8(0), x9(0), x10(0), x11(0), x12(0), x13(0), x14(0), x15(0)
 {}
+
+VectorClass Matrix::multVect(const VectorClass& vect) const {
+	//Dot product refactor
+	int x = this->x0 * vect.getX() + this->x1 * vect.getY() + this->x2 * vect.getZ() + this->x3 * vect.getW();
+	int y = this->x4 * vect.getX() + this->x5 * vect.getY() + this->x6 * vect.getZ() + this->x7 * vect.getW();
+	int z = this->x8 * vect.getX() + this->x9 * vect.getY() + this->x10 * vect.getZ() + this->x11 * vect.getW();
+	int w = this->x12 * vect.getX() + this->x13 * vect.getY() + this->x14 * vect.getZ() + this->x15 * vect.getW();
+
+	return VectorClass(x, y, z, w);
+}
