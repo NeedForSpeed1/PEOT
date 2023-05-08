@@ -6,18 +6,20 @@ VectorClass::VectorClass()
 {
     X = 0.0;
     Y = 0.0;
+    Z = 0.0;
+    W = 0.0;
 }
 
-
-VectorClass::VectorClass(float inx, float iny)
+VectorClass::VectorClass(float inx, float iny, float inz, float inw)
 {
     X = inx;
     Y = iny;
+    Z = inz;
+    W = inw;
 }
 
 VectorClass::~VectorClass()
 {
-
 }
 
 float VectorClass::getX()
@@ -29,37 +31,57 @@ float VectorClass::getY()
 {
     return Y;
 }
+float VectorClass::getZ()
+{
+    return Z;
+}
+float VectorClass::getW()
+{
+    return W;
+}
 
 float VectorClass::sum()
 {
-    return X+Y;
+    return X + Y + Z + W;
 }
 
-VectorClass VectorClass:: operator+ (const VectorClass& b){
+VectorClass VectorClass::operator+(const VectorClass &b)
+{
     VectorClass c;
-    c.X = this->X+ b.X;    
-    c.Y = this->Y+ b.Y;
+    c.X = this->X + b.X;
+    c.Y = this->Y + b.Y;
+    c.Z = this->Z + b.Z;
+    c.W = this->W + b.W;
     return c;
 }
 
-VectorClass VectorClass:: operator- (const VectorClass& b){
+VectorClass VectorClass::operator-(const VectorClass &b)
+{
     VectorClass c;
-    c.X = this->X- b.X;    
-    c.Y = this->Y- b.Y;
+    c.X = this->X - b.X;
+    c.Y = this->Y - b.Y;
+    c.Z = this->Z - b.Z;
+    c.W = this->W - b.W;
     return c;
 }
 
-VectorClass VectorClass:: operator* (const VectorClass& b){
+VectorClass VectorClass::operator*(const VectorClass &b)
+{
     VectorClass c;
-    c.X = this->X* b.X;    
-    c.Y = this->Y* b.Y;
+    c.X = this->X * b.X;
+    c.Y = this->Y * b.Y;
+    c.Z = this->Z * b.Z;
+    c.W = this->W * b.W;
     return c;
 }
 
-VectorClass VectorClass:: operator/ (const VectorClass& b){
+VectorClass VectorClass::operator/(const VectorClass &b)
+{
     VectorClass c;
-    c.X = this->X/b.X;    
-    c.Y = this->Y/b.Y;
+    c.X = this->X / b.X;
+    c.Y = this->Y / b.Y;
+    c.Z = this->Z / b.Z;
+    c.W = this->W / b.W;
     return c;
 }
 
@@ -67,14 +89,18 @@ float VectorClass::length()
 {
     float a = this->X;
     float b = this->Y;
-    return sqrt(a*a + b*b);
+    float c = this->Z;
+    float d = this->W;
+    return sqrt(a * a + b * b + c * c + d * d);
 }
 
-VectorClass VectorClass:: normalize (){
+VectorClass VectorClass::normalize()
+{
     VectorClass c;
     float len = length();
-    c.X = this->X/len;    
-    c.Y = this->Y/len;
+    c.X = this->X / len;
+    c.Y = this->Y / len;
+    c.Z = this->Z / len;
+    c.W = this->W / len;
     return c;
 }
-

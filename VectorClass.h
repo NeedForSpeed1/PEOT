@@ -13,13 +13,15 @@ class VectorClass
 {
 public:
     VectorClass();
-    VectorClass(float, float);
+    VectorClass(float, float, float, float);
     ~VectorClass();
 
-float getX();
-float getY();
+    float getX();
+    float getY();
+    float getZ();
+    float getW();
     float sum();
-    
+
     VectorClass operator+(const VectorClass &v);
     VectorClass operator-(const VectorClass &v);
     VectorClass operator*(const VectorClass &v);
@@ -28,67 +30,73 @@ float getY();
     float length();
     VectorClass normalize();
 
-
 private:
     float X;
     float Y;
+    float Z;
+    float W;
 };
-float dist(VectorClass a, VectorClass b){
-    float dx= a.getX() - b.getX();
-    float dy= a.getY() - b.getY();
-    return sqrt(dx*dx + dy*dy);
+static float dist(VectorClass a, VectorClass b)
+{
+    float dx = a.getX() - b.getX();
+    float dy = a.getY() - b.getY();
+    float dz = a.getZ() - b.getZ();
+    float dw = a.getW() - b.getW();
+    return sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
 }
 
-float dotProduct(VectorClass a, VectorClass b){    
-    return a.getX()*b.getX() + a.getY()*b.getY();
+static float dotProduct(VectorClass a, VectorClass b)
+{
+    return a.getX() * b.getX() + a.getY() * b.getY() + a.getZ() * b.getZ() + a.getW() * b.getW();
 }
 
-float crossProduct(VectorClass a, VectorClass b){    
-    return a.getX()*b.getY() - a.getY()*b.getX();
+static float crossProduct(VectorClass a, VectorClass b)
+{
+    return a.getX() * b.getY() - a.getY() * b.getX();
 }
-
 
 int main()
 {
 
     float a = 4.0;
     float b = 6.0;
+    float c = 8.0;
+    float d = 3.0;
 
-    VectorClass obj1(a, b);
+    VectorClass obj1(a, b, c, d);
 
     cout << obj1.sum() << endl;
 
     a = 2.0;
     b = 3.0;
+    c = 5.0;
+    d = 7.0;
 
-    VectorClass obj2(a, b);
+    VectorClass obj2(a, b, c, d);
 
     VectorClass obj3;
     obj3 = obj1 + obj2;
-    cout<< obj3.sum() <<endl;
-
+    cout << obj3.sum() << endl;
 
     obj3 = obj1 - obj2;
-    cout<< obj3.sum() <<endl;
+    cout << obj3.sum() << endl;
 
     obj3 = obj1 * obj2;
-    cout<< obj3.sum() <<endl;
+    cout << obj3.sum() << endl;
 
-    obj3 = obj1/obj2;
-    cout<< obj3.sum() <<endl;
+    obj3 = obj1 / obj2;
+    cout << obj3.sum() << endl;
 
-    cout<< obj1.length() <<endl;  
+    cout << obj1.length() << endl;
 
-
-    cout<< dist(obj1, obj2) <<endl;
+    cout << dist(obj1, obj2) << endl;
 
     obj3 = obj1.normalize();
-    cout<< obj3.sum() <<endl;
+    cout << obj3.sum() << endl;
 
-    cout<< dotProduct(obj1, obj2) <<endl;
+    cout << dotProduct(obj1, obj2) << endl;
 
-    cout<< crossProduct(obj1, obj2) <<endl;
-
+    // cout << crossProduct(obj1, obj2) << endl;
 }
 
 #endif
