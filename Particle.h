@@ -16,11 +16,11 @@ Private:
 
 	float compMass; //compliment of mass (its inverse)
 	
-	float position;
+	VectorClass position;
 
-	float velocity;
+	VectorClass velocity;
 
-	float acceleration;
+	VectorClass acceleration;
 
 
 Public:
@@ -35,29 +35,29 @@ Public:
 
 	~Particle();	//destructor
 
-	float getPosition();
+	VectorClass getPosition();
 
-	float getVelocity();
+	VectorClass getVelocity();
 
-	float getAcceleration();
+	VectorClass getAcceleration();
 
 	float getCompMass();
 
 	void resetCompMass(float m);
 
-	void setPosition(float p);
+	void setPosition(VectorClass p);
 
-	void setAcceleration(float a);
+	void setAcceleration(VectorClass a);
 
-	void setVelocity(float v);
+	void setVelocity(VectorClass v);
 
 	int getId();
 
 	void resetId(int new_id);
 
-	void Update(float p, float v, float a, float time);	//update all at once (broken down below for unit testing)
+	void Update(VectorClass p, VectorClass v, VectorClass a, float time);	//update all at once (broken down below for unit testing)
 
-	void UpdatePosition(float v, float a, float time);	//update position in isolation
+	void UpdatePosition(VectorClass v, VectorClass a, float time);	//update position in isolation
 
 	void UpdateVelocity(float new_a, float time);	//update velocity in isolation
 

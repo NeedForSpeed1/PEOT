@@ -30,6 +30,7 @@ public:
     float length();
     VectorClass normalize();
     VectorClass crossProduct(const VectorClass &v);
+    VectorClass scaledVector(const VectorClass &v, float scalar);
 
 private:
     float X;
