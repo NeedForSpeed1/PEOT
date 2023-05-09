@@ -29,6 +29,7 @@ public:
 
     float length();
     VectorClass normalize();
+    VectorClass crossProduct(const VectorClass &v);
 
 private:
     float X;
@@ -48,11 +49,6 @@ static float dist(VectorClass a, VectorClass b)
 static float dotProduct(VectorClass a, VectorClass b)
 {
     return a.getX() * b.getX() + a.getY() * b.getY() + a.getZ() * b.getZ() + a.getW() * b.getW();
-}
-
-static float crossProduct(VectorClass a, VectorClass b)
-{
-    return a.getX() * b.getY() - a.getY() * b.getX();
 }
 
 int main()
@@ -96,7 +92,14 @@ int main()
 
     cout << dotProduct(obj1, obj2) << endl;
 
-    // cout << crossProduct(obj1, obj2) << endl;
+    obj3 = obj1.crossProduct(obj2);
+
+    cout<< "Cross Product"<< endl;
+
+    cout << obj3.getX() << endl;
+    cout << obj3.getY() << endl;
+    cout << obj3.getZ() << endl;
+    cout << obj3.getW() << endl;
 }
 
 #endif

@@ -104,3 +104,13 @@ VectorClass VectorClass::normalize()
     c.W = this->W / len;
     return c;
 }
+
+VectorClass VectorClass::crossProduct(const VectorClass &b)
+{
+    VectorClass c;
+    c.X = this->Y * b.Z - this->Z * b.Y;
+    c.Y = this->Z * b.X - this->X * b.Z;
+    c.Z = this->X * b.Y - this->Y * b.X;
+    c.W = 1;
+    return c;
+}
