@@ -8,7 +8,7 @@ class Matrix{
 	Matrix();
 	Matrix add(const Matrix & other) const;
 	Matrix subtract(const Matrix & other) const;
-	VectorClass multVect(const VectorClass & vect)const;
+	VectorClass multVect(VectorClass & vect) const;
 	static Matrix getIdentity();
 	//Matrix crossProduct();
 	Matrix multMatrix(const Matrix & other) const;
