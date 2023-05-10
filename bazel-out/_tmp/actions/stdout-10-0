@@ -1,0 +1,3 @@
+Particle_p1.cc
+Note: including file: C:\users\sholz\_bazel_sholz\mu56skrz\execroot\__main__\prac\prac1\lib2\Particle_p1.h
+C:\users\sholz\_bazel_sholz\mu56skrz\execroot\__main__\prac\prac1\lib2\Particle_p1.h(3): fatal error C1083: Cannot open include file: 'Vect_p1.h': No such file or directory
