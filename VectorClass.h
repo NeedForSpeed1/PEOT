@@ -21,6 +21,9 @@ public:
     float getZ();
     float getW();
     float sum();
+    void  setX(float x);
+    void  setY(float y);
+    void  setZ(float z);
 
     VectorClass operator+(const VectorClass &v);
     VectorClass operator-(const VectorClass &v);

@@ -23,8 +23,8 @@ class Missile : public Application
 
         void render()
         {
-            Vector position;
-            particle.getPosition(&position);
+            VectorClass position;
+            //particle.getPosition(&position);
 
             //set up shape type here with sdl2
         }
@@ -115,7 +115,7 @@ void Missile::update()
             // is it out of range or other condition that prevents its appearance now?
             if (shot->particle.getPosition().y < 0.0f ||
                 shot->startTime + 5000 < TimingData::get().lastFrameTimestamp ||
-                shot->particle.getPosition().z > 200.0f)
+                shot->particle.getPosition().getZ() > 200.0f)
             {
                 // object pooling for better performance
                 shot->type = UNUSED;

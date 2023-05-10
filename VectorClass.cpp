@@ -123,3 +123,18 @@ VectorClass VectorClass::scaledVector(const VectorClass &v, float scalar){
     c.W = this->W;
     return c;
 }
+
+    void  VectorClass::setX(float x)
+    {
+        this->X = x;
+    }
+
+    void  VectorClass::setY(float y)
+    {
+        this->Y = y;
+    }
+
+    void  VectorClass::setZ(float z)
+    {
+        this->Z = z;
+    }
