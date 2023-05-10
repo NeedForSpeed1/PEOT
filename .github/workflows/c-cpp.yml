@@ -13,8 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
     - name: Makefile
       run: minggw32-make -f Makefile
     - name: Tests
