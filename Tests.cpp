@@ -2,6 +2,9 @@
 #include "Particle.h"
 #include "VectorClass.h"
 
+//need to build these out and on on collission elements and particle elements next
+//call mingw32-make 
+    //then call ./runTests
 int test_VectorAdd()
 {
     return 1;
