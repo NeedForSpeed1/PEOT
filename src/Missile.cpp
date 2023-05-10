@@ -2,6 +2,7 @@
 #include <GlutInfo.h>
 #include <application.h>
 #include <Timing.h>
+#include <Particle.h>
 
 #include <stdio.h>
 
@@ -25,18 +26,7 @@ class Missile : public Application
             Vector position;
             particle.getPosition(&position);
 
-            glColor3f(0, 0, 0);
-            glPushMatrix();
-            glTranslatef(position.x, position.y, position.z);
-            glutSolidSphere(0.3f, 5, 4);
-            glPopMatrix();
-
-            glColor3f(0.75, 0.75, 0.75);
-            glPushMatrix();
-            glTranslatef(position.x, 0, position.z);
-            glScalef(1.0f, 0.1f, 1.0f);
-            glutSolidSphere(0.6f, 5, 4);
-            glPopMatrix();
+            //set up shape type here with sdl2
         }
     };
 
@@ -106,7 +96,7 @@ void Missile::release()
     shot->startTime = TimingData::get().lastFrameTimestamp;
     shot->type = currShotType;
 
-    shot->particle.clearAccumulator();
+    //shot->particle.clearAccumulator();
 }
 
 void Missile::update()
@@ -120,7 +110,7 @@ void Missile::update()
     {
         if (shot->type != UNUSED)
         {
-            shot->particle.integrate(duration);
+            shot->particle.Update(duration);    //add a 2nd update method that only takes duration
 
             // is it out of range or other condition that prevents its appearance now?
             if (shot->particle.getPosition().y < 0.0f ||
