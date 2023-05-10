@@ -59,6 +59,8 @@ public:
 
 	void resetId(int new_id);
 
+	void Update(float d);
+
 	void Update(VectorClass p, VectorClass v, VectorClass a, float time);	//update all at once (broken down below for unit testing)
 
 	void UpdatePosition(VectorClass v, VectorClass a, float time);	//update position in isolation
