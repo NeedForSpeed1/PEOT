@@ -116,12 +116,10 @@ VectorClass VectorClass::crossProduct(const VectorClass &b)
 }
 
 VectorClass VectorClass::scaledVector(const VectorClass &v, float scalar){
-    VectorClass c;
-    c.X = this->X * scalar;
-    c.Y = this->Y * scalar;
-    c.Z = this->Z * scalar;
-    c.W = this->W;
-    return c;
+    this->X = v.X * scalar;
+    this->Y = v.Y * scalar;
+    this->Z = v.Z * scalar;
+    return *this;
 }
 
     void  VectorClass::setX(float x)

@@ -30,7 +30,7 @@ Particle& Particle::operator=(const Particle& p)
 	return *this;
 }
 
-Particle::~Particle() {/*call vector destructors for p, v, and a here */ }
+//Particle::~Particle() {/*call vector destructors for p, v, and a here */ }
 
 VectorClass Particle::getPosition()
 {
@@ -152,7 +152,25 @@ void Particle::Update(float d)	//d is for amount of time (duration)
 	this->velocity = this->velocity.scaledVector(this->velocity, v_multiplier);
 
 	//reset amount of forcethat has built up for this particle
-    this->currForce.setX(0);
-	this->currForce.setY(0);
-	this->currForce.setZ(0);
+    //this->currForce.setX(1);
+	//this->currForce.setY(1);
+	//this->currForce.setZ(1);
+}
+
+void Particle::print()
+{
+	printf("\n===PARTICLE DATA===\n");
+	printf("Position [%f, %f, %f]\n", this->position.X, this->position.Y, this->position.Z);
+	printf("Velocity [%f, %f, %f]\n", this->velocity.getX(), this->velocity.getY(), this->velocity.getZ());
+	printf("Aceleration [%f, %f, %f]\n", this->acceleration.getX(), this->acceleration.getY(), this->acceleration.getZ());
+	printf("Current Force [%f, %f, %f]\n", this->currForce.getX(), this->currForce.getY(), this->currForce.getZ());
+	printf("Mass: %f	| Drag from Friction: %f\n", this->compMass, this->drag);
+	printf("===================\n");
+}
+
+void Particle::setCurrForce(float f_a, float f_b, float f_c)
+{
+	this->currForce.setX(f_a);
+	this->currForce.setY(f_b);
+	this->currForce.setZ(f_c); 
 }
