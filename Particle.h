@@ -4,7 +4,8 @@
 
 class Particle
 {
-Private: 
+
+public:
 	//NOTE: position, velocity, and acceleration are actually vectors
 		//they are written as floats while the vector class is getting made
 		//once vector class isimplemented, these data types will change to vectors
@@ -23,7 +24,6 @@ Private:
 	float acceleration;
 
 
-Public:
 
 	Particle();	//default ctr
 
@@ -31,7 +31,7 @@ Public:
 
 	Particle(const Particle &p);	//copy ctr
 
-	Particle& operator=(const Particle& p)	//assignment operator
+	Particle& operator=(const Particle& p);	//assignment operator
 
 	~Particle();	//destructor
 
