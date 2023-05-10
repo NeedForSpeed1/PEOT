@@ -78,7 +78,7 @@ Matrix Matrix::multMatrix(const Matrix & other) const{
 	retVal.x12 = this->x12 * other.x0 + this->x13 * other.x4 + this->x14 * other.x8 + this->x15 * other.x12;
 	retVal.x13 = this->x12 * other.x1 + this->x13 * other.x5 + this->x14 * other.x9 + this->x15 * other.x13;
 	retVal.x14 = this->x12 * other.x2 + this->x13 * other.x6 + this->x14 * other.x10 + this->x15 * other.x14;
-	retVal.x15 = this->x12 * other.x3 + this->x13 * other.x47 + this->x14 * other.x11 + this->x15 * other.x15;
+	retVal.x15 = this->x12 * other.x3 + this->x13 * other.x7 + this->x14 * other.x11 + this->x15 * other.x15;
 	
 	return retVal;
 }
@@ -98,12 +98,12 @@ Matrix::Matrix()
 :x0(0),x1(0), x2(0), x3(0), x4(0), x5(0), x6(0), x7(0), x8(0), x9(0), x10(0), x11(0), x12(0), x13(0), x14(0), x15(0)
 {}
 
-VectorClass Matrix::multVect(const VectorClass& vect) const {
+VectorClass Matrix::multVect(VectorClass& vect) const{
 	//Dot product refactor
-	int x = this->x0 * vect.getX() + this->x1 * vect.getY() + this->x2 * vect.getZ() + this->x3 * vect.getW();
-	int y = this->x4 * vect.getX() + this->x5 * vect.getY() + this->x6 * vect.getZ() + this->x7 * vect.getW();
-	int z = this->x8 * vect.getX() + this->x9 * vect.getY() + this->x10 * vect.getZ() + this->x11 * vect.getW();
-	int w = this->x12 * vect.getX() + this->x13 * vect.getY() + this->x14 * vect.getZ() + this->x15 * vect.getW();
+	float x = this->x0 * vect.getX() + this->x1 * vect.getY() + this->x2 * vect.getZ() + this->x3 * vect.getW();
+	float y = this->x4 * vect.getX() + this->x5 * vect.getY() + this->x6 * vect.getZ() + this->x7 * vect.getW();
+	float z = this->x8 * vect.getX() + this->x9 * vect.getY() + this->x10 * vect.getZ() + this->x11 * vect.getW();
+	float w = this->x12 * vect.getX() + this->x13 * vect.getY() + this->x14 * vect.getZ() + this->x15 * vect.getW();
 
 	return VectorClass(x, y, z, w);
 }
