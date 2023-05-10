@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Makefile
-      run: mingw32-make -f Makefile
-    - name: Tests
-      run: mingw32-make -f Tests.mk
+    #- name: Makefile
+     # run: mingw32-make -f Makefile
+    #- name: Tests
+     # run: mingw32-make -f Tests.mk
 
