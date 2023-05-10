@@ -1,5 +1,6 @@
 #include "Particle.h"
 #include "VectorClass.h"
+#include <cmath>
 
 Particle::Particle(): id(0), position(0,0,0,1), velocity(0,0,0,1), acceleration(0,0,0,1), compMass(0)
 {}
@@ -131,4 +132,27 @@ void Particle::UpdateAcceleration(VectorClass a)
 {
 	//FIX THIS
 	this->acceleration = a;
+}
+
+void Particle::Update(float d)	//d is for amount of time (duration)
+{
+	if (this->compMass == 0) {return;}	//break early because it needs some sort of mass
+
+	    // Update linear position
+    this->position = this->position + (this->position.scaledVector(velocity, d));
+
+    // acceleration from force
+    VectorClass resultingAcc = acceleration + acceleration.scaledVector(currForce, compMass);
+
+    // Update linear velocity from acceleration
+	this->velocity = this->velocity + velocity.scaledVector(resultingAcc, d);
+
+    // Impose drag.
+    float v_multiplier = pow(drag, d);
+	this->velocity = this->velocity.scaledVector(this->velocity, v_multiplier);
+
+	//reset amount of forcethat has built up for this particle
+    this->currForce.setX(0);
+	this->currForce.setY(0);
+	this->currForce.setZ(0);
 }
