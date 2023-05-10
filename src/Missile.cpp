@@ -105,7 +105,7 @@ void Missile::update()
     float duration = (float)TimingData::get().lastFrameDuration * 0.001f;
     if (duration <= 0.0f) return;
 
-    // Update physics of each particle 
+    // Update physics of each particle //
     for (Round* shot = ammo; shot < ammo + max_rounds; shot++)
     {
         if (shot->type != UNUSED)
@@ -113,7 +113,7 @@ void Missile::update()
             shot->particle.Update(duration);    //add a 2nd update method that only takes duration
 
             // is it out of range or other condition that prevents its appearance now?
-            if (shot->particle.getPosition().y < 0.0f ||
+            if (shot->particle.getPosition().getY() < 0.0f ||
                 shot->startTime + 5000 < TimingData::get().lastFrameTimestamp ||
                 shot->particle.getPosition().getZ() > 200.0f)
             {
@@ -128,28 +128,7 @@ void Missile::update()
 
 void Missile::display()
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    gluLookAt(-25.0, 8.0, 5.0, 0.0, 5.0, 22.0, 0.0, 1.0, 0.0);
-
-    glColor3f(0.0f, 0.0f, 0.0f);
-    glPushMatrix();
-    glTranslatef(0.0f, 1.5f, 0.0f);
-    glutSolidSphere(0.1f, 5, 5);
-    glTranslatef(0.0f, -1.5f, 0.0f);
-    glColor3f(0.75f, 0.75f, 0.75f);
-    glScalef(1.0f, 0.1f, 1.0f);
-    glutSolidSphere(0.1f, 5, 5);
-    glPopMatrix();
-
-    glColor3f(0.75f, 0.75f, 0.75f);
-    glBegin(GL_LINES);
-    for (unsigned i = 0; i < 200; i += 10)
-    {
-        glVertex3f(-5.0f, 0.0f, i);
-        glVertex3f(5.0f, 0.0f, i);
-    }
-    glEnd();
+    //set up visibility here with sdl
 
     // Render each particle
     for (Round* shot = ammo; shot < ammo + max_rounds; shot++)
@@ -160,7 +139,7 @@ void Missile::display()
         }
     }
 
-    glColor3f(0.0f, 0.0f, 0.0f);
+    //glColor3f(0.0f, 0.0f, 0.0f);
     renderText(10.0f, 34.0f, "Click: Release\n1-4: Select Type");
     //display the selected type
     if (currShotType==MISSILE)  //may need to change logic if == not pulling ocrrectly
@@ -180,7 +159,7 @@ void Missile::key(unsigned char key)
 {
     switch (key)
     {
-    case '1': currentShotType = MISSILE; break;
+    case '1': currShotType = MISSILE; break;
         //add more cases as we extend
     }
 }
