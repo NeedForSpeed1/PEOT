@@ -1,7 +1,7 @@
 #pragma once
 //include math library here
 #include "VectorClass.h"
-#include "Matrix.h"
+//#include "Matrix.h"
 #include<iostream>
 
 class Particle
@@ -37,7 +37,7 @@ public:
 
 	Particle& operator=(const Particle& p);	//assignment operator
 
-	~Particle();	//destructor
+	//~Particle();	//destructor
 
 	VectorClass getPosition();
 
@@ -70,4 +70,8 @@ public:
 	void UpdateAcceleration_Manual(VectorClass a);	//update acceleration in isolation manually
 
 	void UpdateAcceleration(VectorClass a); 
+
+	void print();
+
+	void setCurrForce(float f_a, float f_b, float f_c);
 };

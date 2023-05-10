@@ -35,7 +35,7 @@ public:
     VectorClass crossProduct(const VectorClass &v);
     VectorClass scaledVector(const VectorClass &v, float scalar);
 
-private:
+public:
     float X;
     float Y;
     float Z;
@@ -55,6 +55,7 @@ static float dotProduct(VectorClass a, VectorClass b)
     return a.getX() * b.getX() + a.getY() * b.getY() + a.getZ() * b.getZ() + a.getW() * b.getW();
 }
 
+/*
 int main()
 {
 
@@ -105,5 +106,6 @@ int main()
     cout << obj3.getZ() << endl;
     cout << obj3.getW() << endl;
 }
+*/
 
 #endif
