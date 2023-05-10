@@ -1,0 +1,8 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "particle_p1",
+    srcs = ["Particle_p1.cc"],
+    hdrs = ["Particle_p1.h"],
+    visibility = ["//prac/prac1:__pkg__"],
+)

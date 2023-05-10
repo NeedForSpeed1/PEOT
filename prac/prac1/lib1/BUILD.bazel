@@ -1,0 +1,8 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "vect_p1",
+    srcs = ["Vect_p1.cc"],
+    hdrs = ["Vect_p1.h"],
+    visibility = ["//prac/prac1:__pkg__"],
+)
