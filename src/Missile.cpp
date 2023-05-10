@@ -105,7 +105,7 @@ void Missile::update()
     float duration = (float)TimingData::get().lastFrameDuration * 0.001f;
     if (duration <= 0.0f) return;
 
-    // Update physics of each particle 
+    // Update physics of each particle //
     for (Round* shot = ammo; shot < ammo + max_rounds; shot++)
     {
         if (shot->type != UNUSED)
