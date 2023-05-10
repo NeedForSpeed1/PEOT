@@ -1,5 +1,7 @@
 #pragma once
 //include math library here
+#include "VectorClass.h"
+#include "Matrix.h"
 #include<iostream>
 
 class Particle
@@ -23,11 +25,13 @@ public:
 
 	VectorClass acceleration;
 
+	VectorClass currForce;	//needs to be track for changes to ensure energy remains consistent
+
 
 
 	Particle();	//default ctr
 
-	Particle(float p, float v, float a);	//specialized ctr
+	Particle(VectorClass p, VectorClass v, VectorClass a);	//specialized ctr
 
 	Particle(const Particle &p);	//copy ctr
 
@@ -45,11 +49,11 @@ public:
 
 	void resetCompMass(float m);
 
-	void setPosition(VectorClass p);
+	void setPosition(float x, float y, float z);
 
-	void setAcceleration(VectorClass a);
+	void setAcceleration(float x, float y, float z);
 
-	void setVelocity(VectorClass v);
+	void setVelocity(float x, float y, float z);
 
 	int getId();
 
@@ -59,9 +63,9 @@ public:
 
 	void UpdatePosition(VectorClass v, VectorClass a, float time);	//update position in isolation
 
-	void UpdateVelocity(float new_a, float time);	//update velocity in isolation
+	void UpdateVelocity(VectorClass new_a, float time);	//update velocity in isolation
 
-	void UpdateAcceleration_Manual(float a);	//update acceleration in isolation manually
+	void UpdateAcceleration_Manual(VectorClass a);	//update acceleration in isolation manually
 
-	float UpdateAcceleration(float); 
+	void UpdateAcceleration(VectorClass a); 
 };

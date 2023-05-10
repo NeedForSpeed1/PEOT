@@ -1,10 +1,10 @@
 #include "Particle.h"
 #include "VectorClass.h"
 
-Particle::Particle(): id(0), position(0), velocity(0), acceleration(0), compMass(0)
+Particle::Particle(): id(0), position(0,0,0,1), velocity(0,0,0,1), acceleration(0,0,0,1), compMass(0)
 {}
 
-Particle::Particle(float p, float v, float a): id(0), position(p), velocity(v), 
+Particle::Particle(VectorClass p, VectorClass v, VectorClass a): id(0), position(p), velocity(v), 
 acceleration(a), compMass(0)
 {}
 
@@ -66,19 +66,26 @@ void Particle::resetId(int new_id)
 	id = new_id;
 }
 
-void Particle::setPosition(VectorClass p)
+void Particle::setPosition(float x, float y, float z)
 {
-	position = p;
+	this->position.setX(x);
+	this->position.setY(y);
+	this->position.setZ(z);
+
 }
 
-void Particle::setAcceleration(VectorClass a)
+void Particle::setAcceleration(float x, float y, float z)
 {
-	acceleration = a;
+	this->acceleration.setX(x);
+	this->acceleration.setY(y);
+	this->acceleration.setZ(z);
 }
 
-void Particle::setVelocity(VectorClass v)
+void Particle::setVelocity(float x, float y, float z)
 {
-	velocity = v;
+	this->velocity.setX(x);
+	this->velocity.setY(y);
+	this->velocity.setZ(z);
 }
 
 void Particle::Update(VectorClass p, VectorClass v, VectorClass a, float time)
@@ -100,29 +107,28 @@ void Particle::UpdatePosition(VectorClass v, VectorClass a, float time)
 	ret1.scaledVector(v, time);
 	VectorClass ret2;
 	ret1.scaledVector(a, time * time * 0.5);
-	this.position = ret1 + ret2;
+	this->position = ret1 + ret2;
 	
 	
 	//this.position.addScaledVector(v, t);
 	//thisposition.addscaledVector(a, time * time * 0.05);
 }
 
-void Particle::UpdateVelocity(float new_a, float time)
+void Particle::UpdateVelocity(VectorClass new_a, float time)
 {
 	//velocity is just the 1st derivative of the position
-		//velocity = v;		//FIX THIS NEXT
-	//this.velocity.addScaledVector(a, time)  //change to this once vect implemented
+	this->velocity = new_a.scaledVector(new_a, time);
 }
 
-void Particle::UpdateAcceleration_Manual(float a)
+void Particle::UpdateAcceleration_Manual(VectorClass a)
 {
 	//acceleration is just the 2nd derivative of the position (1st derivative of velocity)
-	acceleration = a;
+	this->acceleration = a;
 	//gets new a for velocity update, this will get expanded upon later
 }
 
-float Particle::UpdateAcceleration(float a)
+void Particle::UpdateAcceleration(VectorClass a)
 {
-	acceleration = a;
-	return a;
+	//FIX THIS
+	this->acceleration = a;
 }
