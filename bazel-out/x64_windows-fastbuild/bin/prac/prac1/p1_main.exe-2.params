@@ -1,0 +1,10 @@
+/nologo
+/OUT:bazel-out/x64_windows-fastbuild/bin/prac/prac1/p1_main.exe
+bazel-out/x64_windows-fastbuild/bin/prac/prac1/_objs/p1_main/p1_main.obj
+bazel-out/x64_windows-fastbuild/bin/prac/prac1/lib1/vect_p1.lib
+bazel-out/x64_windows-fastbuild/bin/prac/prac1/lib2/particle_p1.lib
+/SUBSYSTEM:CONSOLE
+/MACHINE:X64
+/DEFAULTLIB:msvcrt.lib
+/DEBUG:FASTLINK
+/INCREMENTAL:NO

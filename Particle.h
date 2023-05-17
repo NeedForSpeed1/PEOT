@@ -1,10 +1,13 @@
 #pragma once
 //include math library here
+#include "VectorClass.h"
+//#include "Matrix.h"
 #include<iostream>
 
 class Particle
 {
-Private: 
+
+public:
 	//NOTE: position, velocity, and acceleration are actually vectors
 		//they are written as floats while the vector class is getting made
 		//once vector class isimplemented, these data types will change to vectors
@@ -16,46 +19,59 @@ Private:
 
 	float compMass; //compliment of mass (its inverse)
 	
-	float position;
+	VectorClass position;
 
-	float velocity;
+	VectorClass velocity;
 
-	float acceleration;
+	VectorClass acceleration;
+
+	VectorClass currForce;	//needs to be track for changes to ensure energy remains consistent
 
 
-Public:
 
 	Particle();	//default ctr
 
-	Particle(float p, float v, float a);	//specialized ctr
+	Particle(VectorClass p, VectorClass v, VectorClass a);	//specialized ctr
 
-	Particle(&Particle p);	//copy ctr
+	Particle(const Particle &p);	//copy ctr
 
-	//assignment ctr
+	Particle& operator=(const Particle& p);	//assignment operator
 
-	~Particle() {};
+	//~Particle();	//destructor
 
-	float getPosition();
+	VectorClass getPosition();
 
-	float getVelocity();
+	VectorClass getVelocity();
 
-	float getAcceleration();
+	VectorClass getAcceleration();
 
-	float getCompMass() {};
+	float getCompMass();
 
-	void resetCompMass(float m) {};
+	void resetCompMass(float m);
+
+	void setPosition(float x, float y, float z);
+
+	void setAcceleration(float x, float y, float z);
+
+	void setVelocity(float x, float y, float z);
 
 	int getId();
 
 	void resetId(int new_id);
 
-	void Update(float p, float v, float a, float time);	//update all at once (broken down below for unit testing)
+	void Update(float d);
 
-	void UpdatePosition(float v, float a, float time);	//update position in isolation
+	void Update(VectorClass p, VectorClass v, VectorClass a, float time);	//update all at once (broken down below for unit testing)
 
-	void UpdateVelocity(float new_a, float time);	//update velocity in isolation
+	void UpdatePosition(VectorClass v, VectorClass a, float time);	//update position in isolation
 
-	void UpdateAcceleration_Manual(float a);	//update acceleration in isolation manually
+	void UpdateVelocity(VectorClass new_a, float time);	//update velocity in isolation
 
-	float UpdateAcceleration(float) {}; 
+	void UpdateAcceleration_Manual(VectorClass a);	//update acceleration in isolation manually
+
+	void UpdateAcceleration(VectorClass a); 
+
+	void print();
+
+	void setCurrForce(float f_a, float f_b, float f_c);
 };

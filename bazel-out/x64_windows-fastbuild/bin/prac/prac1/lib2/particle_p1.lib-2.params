@@ -1,0 +1,5 @@
+/nologo
+/OUT:bazel-out/x64_windows-fastbuild/bin/prac/prac1/lib2/particle_p1.lib
+/MACHINE:X64
+bazel-out/x64_windows-fastbuild/bin/prac/prac1/lib2/_objs/particle_p1/Particle_p1.obj
+/ignore:4221

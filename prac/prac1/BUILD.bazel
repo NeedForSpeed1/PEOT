@@ -1,0 +1,10 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+cc_binary(
+    name = "p1_main",
+    srcs = ["p1_main.cc"],
+    deps = [
+        "//prac/prac1/lib1:vect_p1",
+        "//prac/prac1/lib2:particle_p1"
+    ],
+)

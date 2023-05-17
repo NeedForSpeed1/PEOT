@@ -1,0 +1,5 @@
+/nologo
+/OUT:bazel-out/x64_windows-fastbuild/bin/prac/prac1/lib1/vect_p1.lib
+/MACHINE:X64
+bazel-out/x64_windows-fastbuild/bin/prac/prac1/lib1/_objs/vect_p1/Vect_p1.obj
+/ignore:4221
