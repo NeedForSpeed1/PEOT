@@ -21,6 +21,8 @@ public:
     VectorClass getMin();
     VectorClass getMax();
 
+    bool isPointIn(VectorClass v);
+
     
 
 
