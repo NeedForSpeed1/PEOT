@@ -34,6 +34,7 @@ public:
     VectorClass normalize();
     VectorClass crossProduct(const VectorClass &v);
     VectorClass scaledVector(const VectorClass &v, float scalar);
+    VectorClass divideVector(const VectorClass &v, float scalar);
 
 public:
     float X;
@@ -54,6 +55,7 @@ static float dotProduct(VectorClass a, VectorClass b)
 {
     return a.getX() * b.getX() + a.getY() * b.getY() + a.getZ() * b.getZ() + a.getW() * b.getW();
 }
+
 
 /*
 int main()
