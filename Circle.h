@@ -27,3 +27,10 @@ public:
     float radius;
     Particle body;
 };
+
+static bool dist(Circle a, Circle b)
+{
+        VectorClass centerVector = a.getCenter()-b.getCenter();
+        float radiusSum = a.getRadius() + a.getRadius();
+        return centerVector.lengthSquared() <= radiusSum * radiusSum;
+}

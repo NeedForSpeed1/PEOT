@@ -94,6 +94,12 @@ float VectorClass::length()
     return sqrt(a * a + b * b + c * c + d * d);
 }
 
+float VectorClass::lengthSquared()
+{
+    float len = length();
+    return len * len;
+}
+
 VectorClass VectorClass::normalize()
 {
     VectorClass c;

@@ -26,8 +26,8 @@ bool Circle::hasCollide(VectorClass vec)
     VectorClass center = getCenter();
     VectorClass centerToPoint = vec - center;
 
-    float len = centerToPoint.length();
-    return len < getRadius();
+    float rad = getRadius();
+    return centerToPoint.lengthSquared() < rad * rad;
 }
 
 bool Circle::pointOnLine(Line line)

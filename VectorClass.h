@@ -31,6 +31,7 @@ public:
     VectorClass operator/(const VectorClass &v);
 
     float length();
+    float lengthSquared();
     VectorClass normalize();
     VectorClass crossProduct(const VectorClass &v);
     VectorClass scaledVector(const VectorClass &v, float scalar);
