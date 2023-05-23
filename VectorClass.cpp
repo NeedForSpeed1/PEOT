@@ -94,6 +94,12 @@ float VectorClass::length()
     return sqrt(a * a + b * b + c * c + d * d);
 }
 
+float VectorClass::lengthSquared()
+{
+    float len = length();
+    return len * len;
+}
+
 VectorClass VectorClass::normalize()
 {
     VectorClass c;
@@ -115,24 +121,33 @@ VectorClass VectorClass::crossProduct(const VectorClass &b)
     return c;
 }
 
-VectorClass VectorClass::scaledVector(const VectorClass &v, float scalar){
+VectorClass VectorClass::scaledVector(const VectorClass &v, float scalar)
+{
     this->X = v.X * scalar;
     this->Y = v.Y * scalar;
     this->Z = v.Z * scalar;
     return *this;
 }
 
-    void  VectorClass::setX(float x)
-    {
-        this->X = x;
-    }
+VectorClass VectorClass::divideVector(const VectorClass &v, float scalar)
+{
+    this->X = v.X / scalar;
+    this->Y = v.Y / scalar;
+    this->Z = v.Z / scalar;
+    return *this;
+}
 
-    void  VectorClass::setY(float y)
-    {
-        this->Y = y;
-    }
+void VectorClass::setX(float x)
+{
+    this->X = x;
+}
 
-    void  VectorClass::setZ(float z)
-    {
-        this->Z = z;
-    }
+void VectorClass::setY(float y)
+{
+    this->Y = y;
+}
+
+void VectorClass::setZ(float z)
+{
+    this->Z = z;
+}
