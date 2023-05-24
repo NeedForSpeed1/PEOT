@@ -1,4 +1,5 @@
 //need to decide on the mass and other starting elements
+#pragma once
 #include "VectorClass.h"
 
 class Car 

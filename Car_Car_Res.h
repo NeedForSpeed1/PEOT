@@ -4,6 +4,6 @@ class Car_Car_Res
 {
 public:
 
-    static void Collide(Car c1, Car c2);
+    static int Collide(Car c1, Car c2);
 
 };
