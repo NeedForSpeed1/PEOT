@@ -3,6 +3,6 @@
 class Car_Car_Res
 {
 
-    static void Collide(Car c);
+    static void Collide(Car c1, Car c2);
 
 };
