@@ -107,3 +107,63 @@ VectorClass Matrix::multVect(VectorClass& vect) const{
 
 	return VectorClass(x, y, z, w);
 }
+
+ThreeByThreeMatrix Matrix::getSubMatrix(int row, int column){
+	
+	ThreeByThreeMatrix retVal;
+	int retValItr = 0;
+	
+    for(int i=0;i<16;i++){
+		if((i>=(row*4) && i<((row+1)*4)) || i%4 == column){
+			continue;
+		}else{
+			retVal.arrayView[retValItr] = this->arrayView[i];
+			retValItr+=1;
+		}
+	}
+	
+}
+
+ThreeByThreeMatrix::ThreeByThreeMatrix()
+:x0(0),x1(0), x2(0), x3(0), x4(0), x5(0), x6(0), x7(0), x8(0)
+{}
+
+float ThreeByThreeMatrix::getDeterminant(){
+	return ((this->x0)*(this->x4)*(this->x8))+
+	((this->x2)*(this->x3)*(this->x7)) +
+	((this->x1)*(this->x5)*(this->x6)) - 
+	((this->x2)*(this->x4)*(this->x6)) -
+	((this->x0)*(this->x5)*(this->x7)) -
+	((this->x8)*(this->x1)*(this->x3));
+}
+
+float Matrix::getDeterminant(){
+	
+	ThreeByThreeMatrix sub1 = this->getSubMatrix(0,0);
+	ThreeByThreeMatrix sub2 = this->getSubMatrix(1,0);
+	ThreeByThreeMatrix sub3 = this->getSubMatrix(2,0);
+	ThreeByThreeMatrix sub4 = this->getSubMatrix(3,0);
+	
+	return (((this->x0)*sub1.getDeterminant()) - ((this->x4)*(sub2.getDeterminant()))+ ((this->x8)*(sub3.getDeterminant())) -((this->x12)*(sub4.getDeterminant())));
+	
+	
+}
+
+MatrixInverseErrorCode Matrix::inverse(const Matrix & input, const Matrix & output){
+	float divisor = input->getDeterminant();
+	if(0 == divisor){
+		return MatrixInverseErrorCode::NON_INVERTIBLE_MATRIX;
+	}
+	
+	for(int i=0;i<16;i++){
+		int row = i/4;
+		int column = i%4;
+		
+		ThreeByThreeMatrix tmp = input->getSubMatrix(column, row);
+		output->arrayView[i] = (tmp.getDeterminant())/divisor;
+		if(1==(row+column)%2){
+			output->arrayView[i] = output->arrayView[i]*-1;
+		}
+	}
+	return MatrixInverseErrorCode::NONE;
+}
