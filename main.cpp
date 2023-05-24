@@ -9,19 +9,38 @@ const int WIDTH = 800, HEIGHT = 600;
 
 int main(int argc, char *argv[])
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
 
-    SDL_Window *window = SDL_CreateWindow("Physics Engine Simulation", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
-
+    //SDL_Window *window = SDL_CreateWindow("Physics Engine Simulation", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_ALLOW_HIGHDPI);
+    /*
     if (NULL == window)
     {
         std::cout <<"Error in creating window: " <<SDL_GetError() << std::endl;
         return 1;
     }
-
+    */
     SDL_Event windowEvent;
-    
+    SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+    
+    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, 0, &window, &renderer);
+    SDL_RenderSetScale(renderer, 2, 2);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_Rect rect;
+    rect.w = 100;
+    rect.h = 100;
+    rect.x = 300;
+    rect.y = 200;
+    SDL_RenderDrawRect(renderer, &rect);
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    //SDL_RenderDrawPoint(renderer, WIDTH/2, HEIGHT/2);
+    SDL_RenderPresent(renderer);
+    //SDL_Delay(10000);
+
 
     //quick test for particle here  ()
     VectorClass p = VectorClass(10, 20, 30, 1);
@@ -63,7 +82,7 @@ int main(int argc, char *argv[])
 
     while (true)
     {
-        if (SDL_PollEvent(&windowEvent) && result == 0)
+        if (SDL_PollEvent(&windowEvent))
         {
             if (SDL_QUIT == windowEvent.type)
             {
@@ -72,9 +91,11 @@ int main(int argc, char *argv[])
             //test_p.Update(track);
             //test_p.print();
             //track++;
-
-            car1.MoveForward(10.0f);
-            result = Car_Car_Res::Collide(car1, car2);
+            if (result == 0)
+            {
+                car1.MoveForward(10.0f);
+                result = Car_Car_Res::Collide(car1, car2);
+            }
 
             
         }
