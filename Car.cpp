@@ -19,9 +19,24 @@ void Car::setVelocity(VectorClass v)
     this->car_velocity = v;
 }
 
-void Car::setPosition(VectorClass p)
+void Car::setPosition_FD(VectorClass p)
 {
-    this->car_pos = p;
+    this->car_pos_front_driver = p;
+}
+
+void Car::setPosition_FP(VectorClass p)
+{
+    this->car_pos_front_passenger = p;
+}
+
+void Car::setPosition_RD(VectorClass p)
+{
+    this->car_pos_rear_driver = p;
+}
+
+void Car::setPosition_RP(VectorClass p)
+{
+    this->car_pos_rear_passenger = p;
 }
 
 void Car::setAccel(VectorClass a)
@@ -44,9 +59,24 @@ VectorClass Car::getVelocity()
     return this->car_velocity;
 }
 
-VectorClass Car::getPos()
+VectorClass Car::getPos_FD()
 {
-    return this->car_pos;
+    return this->car_pos_front_driver;
+}
+
+VectorClass Car::getPos_FP()
+{
+    return this->car_pos_front_passenger;
+}
+
+VectorClass Car::getPos_RD()
+{
+    return this->car_pos_rear_driver;
+}
+
+VectorClass Car::getPos_RP()
+{
+    return this->car_pos_rear_passenger;
 }
 
 VectorClass Car::getAccel()
