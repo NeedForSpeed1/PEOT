@@ -1,6 +1,7 @@
 #pragma once
 //include math library here
 #include "VectorClass.h"
+#include "Boundary.h"
 //#include "Matrix.h"
 #include<iostream>
 
@@ -35,7 +36,9 @@ public:
 
 	Particle(const Particle &p);	//copy ctr
 
-	Particle& operator=(const Particle& p);	//assignment operator
+    Particle(VectorClass p, VectorClass v, VectorClass a, Boundary& boundary); // Particle ctr with Boundary parmeter
+
+    Particle& operator=(const Particle& p);	//assignment operator
 
 	//~Particle();	//destructor
 
@@ -74,4 +77,9 @@ public:
 	void print();
 
 	void setCurrForce(float f_a, float f_b, float f_c);
+
+    void checkCollision(int screen_width, int screen_height);
+
+private:
+    Boundary& boundary;
 };

@@ -2,22 +2,26 @@
 #include "VectorClass.h"
 #include <cmath>
 
-Particle::Particle(): id(0), position(0,0,0,1), velocity(0,0,0,1), acceleration(0,0,0,1), compMass(0)
-{}
+//Particle::Particle(): id(0), position(0,0,0,1), velocity(0,0,0,1), acceleration(0,0,0,1), compMass(0)
+//{}
+//
+//Particle::Particle(VectorClass p, VectorClass v, VectorClass a): id(0), position(p), velocity(v),
+//acceleration(a), compMass(0)
+//{}
 
-Particle::Particle(VectorClass p, VectorClass v, VectorClass a): id(0), position(p), velocity(v), 
-acceleration(a), compMass(0)
-{}
+Particle::Particle(VectorClass p, VectorClass v, VectorClass a, Boundary& boundary)
+        : id(0), position(p), velocity(v), acceleration(a), compMass(0), boundary(boundary) {}
 
-Particle::Particle(const Particle& p)
-{
-	this->acceleration = p.acceleration; //clean up later to breakdown by vector attributes for a deep copy
-	this->compMass = p.compMass;
-	this->id = p.id;
-	this->position = p.position;
-	this->velocity = p.velocity;
-	//*this = p;
-}
+
+//Particle::Particle(const Particle& p)
+//{
+//	this->acceleration = p.acceleration; //clean up later to breakdown by vector attributes for a deep copy
+//	this->compMass = p.compMass;
+//	this->id = p.id;
+//	this->position = p.position;
+//	this->velocity = p.velocity;
+//	//*this = p;
+//}
 
 Particle& Particle::operator=(const Particle& p)
 {
@@ -138,7 +142,27 @@ void Particle::Update(float d)	//d is for amount of time (duration)
 {
 	if (this->compMass == 0) {return;}	//break early because it needs some sort of mass
 
-	    // Update linear position
+    // Update linear position
+    VectorClass newPos = this->position + (this->position.scaledVector(velocity, d));
+
+    boundary.setWidth((this->position.scaledVector(velocity, d)).getX());
+    boundary.setHeight((this->position.scaledVector(velocity, d)).getY());
+
+
+    // TODO: Need to figure out size of the particle
+
+    // TODO: Need to convert particle position to pixels on the screen
+
+    // Check for boundary collision
+    if(newPos.getX() < 0.0 || newPos.getX() > boundary.getWidth()) {
+        printf("X position: %f boundary: %f", newPos.getX(),boundary.getWidth());
+        std::cout << "Particle has collided with the horizontal boundary!\n";
+    }
+    if(newPos.getY() < 0.0 || newPos.getY() > boundary.getHeight()) {
+        printf("Y position: %f boundary: %f", newPos.getY(),boundary.getHeight());
+        std::cout << "Particle has collided with the vertical boundary!\n";
+    }
+
     this->position = this->position + (this->position.scaledVector(velocity, d));
 
     // acceleration from force
