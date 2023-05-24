@@ -85,3 +85,24 @@ VectorClass Car::getAccel()
 {
     return this->car_accel;
 }
+
+void Car::Update(float d, float m, VectorClass a)   //temp update solution until complete calculations figured out
+{
+	// Update linear position
+    VectorClass addPos(1,0,0,0);
+    this->car_pos_front_driver = this->car_pos_front_driver + addPos;
+    this->car_pos_front_passenger = this->car_pos_front_passenger + addPos;
+    this->car_pos_rear_driver = this->car_pos_rear_driver + addPos;
+    this->car_pos_rear_passenger = this->car_pos_rear_passenger + addPos;
+
+    VectorClass imposed_force = a.scaledVector(a, m);
+    // acceleration from force
+    VectorClass resultingAcc = car_accel + car_accel.scaledVector(imposed_force, car_mass);
+
+    // Update linear velocity from acceleration
+	this->car_velocity = this->car_velocity + car_velocity.scaledVector(resultingAcc, d);
+
+    // Impose drag.
+    float v_multiplier = pow(0.99, d);
+	this->car_velocity = this->car_velocity.scaledVector(this->car_velocity, v_multiplier);
+}
