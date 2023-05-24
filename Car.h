@@ -4,7 +4,6 @@
 class Car 
 {
     public:
-
     Car();
     void setMass(float m);
     void setForce(VectorClass f);
@@ -23,6 +22,7 @@ class Car
     VectorClass getPos_RP();
     VectorClass getAccel();
     void Update(float d, float m, VectorClass a);
+    void MoveForward(float s);
 
     private:
     float car_mass;

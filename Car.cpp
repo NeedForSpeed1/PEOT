@@ -1,7 +1,8 @@
 //from car header
 #include "Car.h"
 
-Car::Car() : car_mass(0), car_pos_front_driver(0,0,0,1), car_pos_front_passenger(0,0,0,1), 
+//assumption of all cars having mass of 100kg for right now
+Car::Car() : car_mass(100), car_pos_front_driver(0,0,0,1), car_pos_front_passenger(0,0,0,1), 
 car_pos_rear_driver(0,0,0,1), car_pos_rear_passenger(0,0,0,1), car_velocity(0,0,0,1), 
 car_accel(0,0,0,1), car_force(0,0,0,1)
 {}
@@ -105,4 +106,13 @@ void Car::Update(float d, float m, VectorClass a)   //temp update solution until
     // Impose drag.
     float v_multiplier = pow(0.99, d);
 	this->car_velocity = this->car_velocity.scaledVector(this->car_velocity, v_multiplier);
+}
+
+void Car::MoveForward(float s)
+{
+    VectorClass delta_x = VectorClass(s, 0.0f, 0.0f, 0.0f);
+    this->car_pos_front_driver = this->car_pos_front_driver + delta_x;
+    this->car_pos_front_passenger = this->car_pos_front_passenger + delta_x;
+    this->car_pos_rear_driver = this->car_pos_rear_driver + delta_x;
+    this->car_pos_rear_passenger = this->car_pos_rear_passenger + delta_x;
 }
