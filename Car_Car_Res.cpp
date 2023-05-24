@@ -3,7 +3,7 @@
 void Car_Car_Res::Collide(Car c1, Car c2)
 {
     //add in sequence of conditions and effects here
-    bool collision = false; //just a filler for now until tie in coll_detection
+    bool collision = true; //just a filler for now until tie in coll_detection
 
     if (collision)  //may be able to remove this condition later
     {
@@ -18,6 +18,13 @@ void Car_Car_Res::Collide(Car c1, Car c2)
             c2.Update(2, c1.getMass(), c1.getAccel());
             //effect on c1 by c2
             c1.Update(2, c2.getMass(), c2.getAccel());  //c2's acceleration sohuld be (0,0,0,1) because it's at rest
+
+            printf("Car collision occured at (%f, %f, %f)!\n\n", c1_x_center, c1_y_center, c1.getPos_FD().getZ());
+
+        }
+        else
+        {
+            printf("No car collisions in this frame\n");
         }
 
         //c1 hits c2 in center while c2 not at rest
