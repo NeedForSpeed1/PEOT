@@ -1,7 +1,9 @@
 //from car header
 #include "Car.h"
 
-Car::Car() : car_mass(0), car_pos(0,0,0,1), car_velocity(0,0,0,1), car_accel(0,0,0,1), car_force(0,0,0,1)
+Car::Car() : car_mass(0), car_pos_front_driver(0,0,0,1), car_pos_front_passenger(0,0,0,1), 
+car_pos_rear_driver(0,0,0,1), car_pos_rear_passenger(0,0,0,1), car_velocity(0,0,0,1), 
+car_accel(0,0,0,1), car_force(0,0,0,1)
 {}
 
 void Car::setMass(float m)
