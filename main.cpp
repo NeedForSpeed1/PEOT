@@ -7,6 +7,25 @@
 
 const int WIDTH = 800, HEIGHT = 600;
 
+void drawAction(SDL_Renderer* r, int x_1, int x_2)
+{
+    SDL_SetRenderDrawColor(r, 255, 255, 255, 255);
+    SDL_Rect rect;
+    rect.w = 60;
+    rect.h = 20;
+    rect.x = x_1;
+    rect.y = 40;
+    SDL_RenderDrawRect(r, &rect);
+
+    SDL_SetRenderDrawColor(r, 255, 255, 255, 255);
+    SDL_Rect rect_car2;
+    rect_car2.w = 60;
+    rect_car2.h = 20;
+    rect_car2.x = x_2;
+    rect_car2.y = 40;
+    SDL_RenderDrawRect(r, &rect_car2);
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -26,16 +45,26 @@ int main(int argc, char *argv[])
     SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, 0, &window, &renderer);
     SDL_RenderSetScale(renderer, 2, 2);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-
+    //SDL_RenderClear(renderer);
+    
+    drawAction(renderer, 20, 120);
+    /*
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_Rect rect;
-    rect.w = 100;
-    rect.h = 100;
-    rect.x = 300;
-    rect.y = 200;
+    rect.w = 60;
+    rect.h = 20;
+    rect.x = 20;
+    rect.y = 40;
     SDL_RenderDrawRect(renderer, &rect);
 
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_Rect rect_car2;
+    rect_car2.w = 60;
+    rect_car2.h = 20;
+    rect_car2.x = 120;
+    rect_car2.y = 40;
+    SDL_RenderDrawRect(renderer, &rect_car2);
+    */
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     //SDL_RenderDrawPoint(renderer, WIDTH/2, HEIGHT/2);
     SDL_RenderPresent(renderer);
@@ -65,6 +94,8 @@ int main(int argc, char *argv[])
     car1.setPosition_FP(c1_p2);
     car1.setPosition_RD(c1_p3);
     car1.setPosition_RP(c1_p4);
+    int x1 = 20;
+
     //set up car 2
     Car car2 = Car();
     VectorClass c2_initial_accel = VectorClass(0,0,0, 1);   //a i s0 bc car 2 is at rest for this scenario
@@ -78,8 +109,10 @@ int main(int argc, char *argv[])
     car2.setPosition_FP(c2_p2);
     car2.setPosition_RD(c2_p3);
     car2.setPosition_RP(c2_p4);
-    int result = 0;
+    int x2 = 120;
 
+    int result = 0;
+    int i = 1;
     while (true)
     {
         if (SDL_PollEvent(&windowEvent))
@@ -94,7 +127,11 @@ int main(int argc, char *argv[])
             if (result == 0)
             {
                 car1.MoveForward(10.0f);
+                //rect.x += 10;
+                //SDL_RenderDrawRect(renderer, &rect);
+                drawAction(renderer, x1 + (10 * i), x2);
                 result = Car_Car_Res::Collide(car1, car2);
+                i++;
             }
 
             
