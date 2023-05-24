@@ -51,18 +51,19 @@ int main(int argc, char *argv[])
     VectorClass c2_initial_accel = VectorClass(0,0,0, 1);   //a i s0 bc car 2 is at rest for this scenario
     car2.setAccel(c2_initial_accel);
     car2.setForce(c2_initial_accel);    //zeroed out since f = ma and a is 0
-    VectorClass c1_p1 = VectorClass(120, 40, 20, 1); //a little farther out from car1 for eventual collision
-    VectorClass c1_p2 = VectorClass(120, 20, 20, 1);
-    VectorClass c1_p3 = VectorClass(180, 40, 20, 1);
-    VectorClass c1_p4 = VectorClass(180, 20, 20, 1);
-    car1.setPosition_FD(c1_p1);
-    car1.setPosition_FP(c1_p2);
-    car1.setPosition_RD(c1_p3);
-    car1.setPosition_RP(c1_p4);
+    VectorClass c2_p1 = VectorClass(120, 40, 20, 1); //a little farther out from car1 for eventual collision
+    VectorClass c2_p2 = VectorClass(120, 20, 20, 1);
+    VectorClass c2_p3 = VectorClass(180, 40, 20, 1);
+    VectorClass c2_p4 = VectorClass(180, 20, 20, 1);
+    car2.setPosition_FD(c2_p1);
+    car2.setPosition_FP(c2_p2);
+    car2.setPosition_RD(c2_p3);
+    car2.setPosition_RP(c2_p4);
+    int result = 0;
 
     while (true)
     {
-        if (SDL_PollEvent(&windowEvent))
+        if (SDL_PollEvent(&windowEvent) && result == 0)
         {
             if (SDL_QUIT == windowEvent.type)
             {
@@ -71,8 +72,11 @@ int main(int argc, char *argv[])
             //test_p.Update(track);
             //test_p.print();
             //track++;
-            car1.MoveForward(4.0f);
-            Car_Car_Res::Collide(car1, car2);
+
+            car1.MoveForward(10.0f);
+            result = Car_Car_Res::Collide(car1, car2);
+
+            
         }
     }
 
