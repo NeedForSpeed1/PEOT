@@ -22,6 +22,7 @@ class Car
     VectorClass getPos_RD();
     VectorClass getPos_RP();
     VectorClass getAccel();
+    void Update(float d, float m, VectorClass a);
 
     private:
     float car_mass;
