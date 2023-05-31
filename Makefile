@@ -1,5 +1,5 @@
 all:
-	g++ -I src/Include -L src/lib -o startEngine VectorClass.cpp Particle.cpp Car.cpp Car_Car_Res.cpp main.cpp -lmingw32 -lSDL2main -lSDL2
+	g++ -I src/Include -L src/lib -o startEngine VectorClass.cpp Boundary.cpp Particle.cpp Car.cpp Car_Car_Res.cpp main.cpp -lmingw32 -lSDL2main -lSDL2
 #target: dependency
 #action
 

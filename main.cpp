@@ -5,7 +5,7 @@
 #include "Car.h"
 #include "Car_Car_Res.h"
 
-const int WIDTH = 800, HEIGHT = 600;
+const float WIDTH = 800.0, HEIGHT = 600.0;
 
 void drawAction(SDL_Renderer* r, int x_1, int x_2)
 {
@@ -75,7 +75,9 @@ int main(int argc, char *argv[])
     VectorClass p = VectorClass(10, 20, 30, 1);
     VectorClass v = VectorClass(10, 20, 30, 1);
     VectorClass a = VectorClass(10, 20, 30, 1);
-    Particle test_p = Particle(p, v, a);
+    Boundary boundary(WIDTH, HEIGHT);
+    Particle test_p = Particle(p, v, a, boundary);
+//    Particle test_p = Particle(p, v, a);
     test_p.resetCompMass(200);
     test_p.setCurrForce(2, 3, 2);
     float track = 2.0f;
