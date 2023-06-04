@@ -1,7 +1,7 @@
 #include "StaticFriction.h"
 
 
-float StaticFriction::getStaticFriction(const Car & c){
+float StaticFriction::getStaticFrictionForce(const Car & c){
 		return c.getMass*GRAVITY_ACCEL*(this->stat_coeff_friction);
 }
 

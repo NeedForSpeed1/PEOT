@@ -12,7 +12,7 @@ class StaticFriction{
 		float stat_coeff_friction;
 	
 	public:
-		float getStaticFriction(const Car & c);
+		float getStaticFrictionForce(const Car & c);
 	
 }
 
