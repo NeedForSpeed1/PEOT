@@ -106,7 +106,7 @@ void Car::Update(float d, float m, VectorClass a)   //temp update solution until
 	if(0.0f == this->car_velocity){
 		StaticFriction sf = EnvironmentSetup.getStaticFriction();
 		float stat_friction_force = sf.getStaticFrictionForce(*this);
-		if(stat_friction_force >= (car_mass*resultingAcc.length())){
+		if(stat_friction_force >= (car_mass*(resultingAcc.length()))){
 			resultingAcc = VectorClass(0,0,0,0); //Force is zeroed out by static friction.
 		}
 	}
