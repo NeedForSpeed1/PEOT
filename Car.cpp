@@ -1,5 +1,6 @@
 //from car header
 #include "Car.h"
+#include "EnvironmentSetup.h"
 
 //assumption of all cars having mass of 100kg for right now
 Car::Car(): car_mass(100), car_pos_front_driver(0,0,0,1), car_pos_front_passenger(0,0,0,1), 
@@ -98,7 +99,17 @@ void Car::Update(float d, float m, VectorClass a)   //temp update solution until
 
     VectorClass imposed_force = a.scaledVector(a, m);
     // acceleration from force
-    VectorClass resultingAcc = car_accel + car_accel.scaledVector(imposed_force, car_mass);
+    VectorClass resultingAcc = car_accel + car_accel.scaledVector(imposed_force, car_mass); // This looks like a bug.  Shouldn't we be using inverse car mass here?
+
+	
+	//apply static friction from environment if car is not moving.  Make it more robust later.
+	if(0.0f == this->car_velocity){
+		StaticFriction sf = EnvironmentSetup.getStaticFriction();
+		float stat_friction_force = sf.getStaticFrictionForce(*this);
+		if(stat_friction_force >= (car_mass*resultingAcc)){
+			resultingAcc = VectorClass(0,0,0,0); //Force is zeroed out by static friction.
+		}
+	}
 
     // Update linear velocity from acceleration
 	this->car_velocity = this->car_velocity + car_velocity.scaledVector(resultingAcc, d);
