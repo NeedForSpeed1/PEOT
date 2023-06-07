@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/thisn/OneDrive/Desktop/Projects/PEOT/PEOT/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/PEOT.dir/includes_CXX.rsp -g -o CMakeFiles\\PEOT.dir\\main.cpp.obj -c C:\\Users\\thisn\\OneDrive\\Desktop\\Projects\\PEOT\\PEOT\\main.cpp",
+  "file": "C:/Users/thisn/OneDrive/Desktop/Projects/PEOT/PEOT/main.cpp"
+},
+{
+  "directory": "C:/Users/thisn/OneDrive/Desktop/Projects/PEOT/PEOT/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/PEOT.dir/includes_CXX.rsp -g -o CMakeFiles\\PEOT.dir\\Particle.cpp.obj -c C:\\Users\\thisn\\OneDrive\\Desktop\\Projects\\PEOT\\PEOT\\Particle.cpp",
+  "file": "C:/Users/thisn/OneDrive/Desktop/Projects/PEOT/PEOT/Particle.cpp"
+}
+]
