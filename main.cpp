@@ -4,6 +4,7 @@
 #include "VectorClass.h"
 #include "Car.h"
 #include "Car_Car_Res.h"
+// #include <opencv2/opencv.hpp>
 
 const float WIDTH = 800.0, HEIGHT = 600.0;
 

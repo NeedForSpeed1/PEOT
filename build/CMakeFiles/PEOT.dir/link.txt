@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\PEOT.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\PEOT.dir/objects.a @CMakeFiles\PEOT.dir\objects1
+C:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\PEOT.dir/objects.a -Wl,--no-whole-archive -o PEOT.exe -Wl,--out-implib,libPEOT.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\PEOT.dir\linkLibs.rsp
